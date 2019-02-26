@@ -1,33 +1,26 @@
+//Dependencies
 var express = require("express");
 
+//Set up port for development or Heroku
 var PORT = process.env.PORT || 8000;
 var app = express();
 
+//Require models
 var db = require("./models");
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
-// Parse application body
+// Set up parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//Routes
+require("./routes/burger-api-routes.js")(app);
+require('./routes/customer-api-routes.js')(app);
+require("./routes/html-routes.js")(app);
 
-// var exphbs = require("express-handlebars");
-
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
-
-var routes = require("./controllers/burgersController.js");
-
-app.use(routes);
-
-// Routes
-// =============================================================
-// require("./routes/html-routes.js")(app);
-// require("./routes/author-api-routes.js")(app);
-// require("./routes/post-api-routes.js")(app);
-
+//Set up db and start server listening
 db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("Listening on port: " + PORT);

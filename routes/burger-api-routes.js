@@ -9,14 +9,20 @@ module.exports = function(app) {
   });
 
   app.get("/burgers", function(req, res) {
-    db.Burger.findAll({}).then(function(burgerData) {
+    db.Burger.findAll({
+      where: {
+        devoured: false
+      }
+    }).then(function(burgerData) {
       res.json(burgerData);
+      console.log(burgerData);
     });
   });
 
   app.post("/burgers/create", function(req, res) {
     db.Burger.create(req.body).then(function(burgerPost) {
       res.json(burgerPost);
+      console.log(burgerPost);
     });
   });
 
