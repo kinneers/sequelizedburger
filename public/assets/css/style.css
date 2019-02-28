@@ -67,8 +67,3 @@ body {
 h1 {
   color: #f30;
 }
-
-.burgerAndButton {
-  display: flex;
-  flex-direction: row;
-}

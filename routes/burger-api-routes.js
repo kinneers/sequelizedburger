@@ -19,6 +19,17 @@ module.exports = function(app) {
     });
   });
 
+  // app.get("/eaten", function(req, res) {
+  //   db.Burger.findAll({
+  //     where: {
+  //       devoured: true
+  //     }
+  //   }).then(function(burgerData) {
+  //     res.json(burgerData);
+  //     console.log(burgerData);
+  //   });
+  // });
+
   app.post("/burgers/create", function(req, res) {
     db.Burger.create(req.body).then(function(burgerPost) {
       res.json(burgerPost);
@@ -26,7 +37,7 @@ module.exports = function(app) {
     });
   });
 
-  app.put("/burgers/:id", function(req, res) {
+  app.put("/burgers/update", function(req, res) {
     db.Burger.update(
       req.body,
       {
