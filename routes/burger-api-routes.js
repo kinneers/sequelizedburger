@@ -19,16 +19,16 @@ module.exports = function(app) {
     });
   });
 
-  // app.get("/eaten", function(req, res) {
-  //   db.Burger.findAll({
-  //     where: {
-  //       devoured: true
-  //     }
-  //   }).then(function(burgerData) {
-  //     res.json(burgerData);
-  //     console.log(burgerData);
-  //   });
-  // });
+  app.get("/burgers/devoured", function(req, res) {
+    db.Burger.findAll({
+      where: {
+        devoured: true
+      }
+    }).then(function(burgersEaten) {
+      res.json(burgersEaten);
+      console.log(burgersEaten);
+    });
+  });
 
   app.post("/burgers/create", function(req, res) {
     db.Burger.create(req.body).then(function(burgerPost) {
@@ -47,5 +47,15 @@ module.exports = function(app) {
       }).then(function(burgerPost){
         res.json(burgerPost);
       });
+  });
+
+  app.delete("/burgers/delete/:id", function(req, res) {
+    db.Burger.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(byeByeBurger) {
+      res.json(byeByeBurger);
+    });
   });
 }
