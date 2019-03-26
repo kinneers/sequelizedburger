@@ -1,4 +1,4 @@
-# S equelized Burger
+# Sequelized Burger
 A burger logger created with Sequelize, Node, Express, and hosted on Heroku.  This application started as a 'skeleton code base' which utilized a technology I was unfamiliar with prior to working with this app (handlebars.js) and a "homemade" ORM.  I was challenged to refactor it using Sequelize, which was fairly new to me at the time, in a short timeframe.  Although I chose to refactor the handlebars using jQuery and template literals, I gained an understanding of how handlebars worked in the original code. 
 
 ### Developed by: Sarah Kinneer
